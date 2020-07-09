@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "font-awesome@5.13.1",
+      "destination": "wwwroot/lib/font-awesome/",
+      "files": [
+        "js/regular.js",
+        "js/all.js",
+        "webfonts/fa-brands-400.eot",
+        "webfonts/fa-brands-400.svg",
+        "webfonts/fa-brands-400.ttf",
+        "webfonts/fa-brands-400.woff",
+        "webfonts/fa-brands-400.woff2",
+        "webfonts/fa-regular-400.eot",
+        "webfonts/fa-regular-400.svg",
+        "webfonts/fa-regular-400.ttf",
+        "webfonts/fa-regular-400.woff",
+        "webfonts/fa-regular-400.woff2",
+        "webfonts/fa-solid-900.eot",
+        "webfonts/fa-solid-900.svg",
+        "webfonts/fa-solid-900.ttf",
+        "webfonts/fa-solid-900.woff",
+        "webfonts/fa-solid-900.woff2",
+        "js/fontawesome.js",
+        "css/regular.css",
+        "css/fontawesome.css",
+        "css/all.css"
+      ]
+    },
+    {
+      "library": "jquery-validate@1.19.2",
+      "destination": "wwwroot/lib/jquery-validate/",
+      "files": [
+        "jquery.validate.js",
+        "localization/messages_pt_BR.js",
+        "additional-methods.js"
+      ]
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.11",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/",
+      "files": [
+        "jquery.validate.unobtrusive.js"
+      ]
+    },
+    {
+      "library": "jquery@3.5.1",
+      "destination": "wwwroot/lib/jquery/",
+      "files": [
+        "jquery.js"
+      ]
+    },
+    {
+      "provider": "cdnjs",
+      "library": "twitter-bootstrap@5.0.0-alpha1",
+      "destination": "wwwroot/lib/bootstrap/",
+      "files": [
+        "js/bootstrap.js",
+        "css/bootstrap-grid.css",
+        "css/bootstrap-reboot.css",
+        "css/bootstrap.css"
+      ]
+    }
+  ]
+}
