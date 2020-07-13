@@ -11,9 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Produtos\Data\" />
-    <Folder Include="Areas\Produtos\Models\" />
-    <Folder Include="Models\" />
+    <Folder Include="Modulos\Produtos\Data\" />
+    <Folder Include="Modulos\Produtos\Models\" />
+    <Folder Include="Modulos\Vendas\Data\" />
+    <Folder Include="Modulos\Vendas\Models\" />
   </ItemGroup>
 
 </Project>
