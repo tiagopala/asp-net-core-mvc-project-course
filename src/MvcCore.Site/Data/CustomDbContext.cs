@@ -1,0 +1,16 @@
+﻿using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace MvcCore.Site.Data
+{
+    public class CustomDbContext : DbContext
+    {
+        public CustomDbContext(DbContextOptions options) : base(options)
+        {
+            
+        }
+    }
+}
