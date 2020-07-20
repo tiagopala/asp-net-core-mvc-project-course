@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MvcCore.Site.Modulos.Vendas.Controllers
+namespace MvcCore.Site.Areas.Vendas.Controllers
 {
     [Area("Vendas")]
     public class PedidosController : Controller

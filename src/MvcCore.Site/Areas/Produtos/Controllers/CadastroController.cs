@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MvcCore.Site.Modulos.Produtos.Controllers
+namespace MvcCore.Site.Areas.Produtos.Controllers
 {
     [Area("Produtos")]
     public class CadastroController : Controller
