@@ -57,12 +57,11 @@ namespace MvcCore.Site
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
-
                 //routes.MapRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
                 routes.MapAreaRoute("AreaProdutos", "Produtos", "Produtos/{controller=Cadastro}/{Action=Index}/{id?}");
                 routes.MapAreaRoute("AreaVendas", "Vendas", "Vendas/{controller=Pedidos}/{Action=Index}/{id?}");
+
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using MvcCore.Site.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,8 @@ namespace MvcCore.Site.Data
         {
             
         }
+
+        public DbSet<Aluno> Alunos { get; set; }
+
     }
 }
