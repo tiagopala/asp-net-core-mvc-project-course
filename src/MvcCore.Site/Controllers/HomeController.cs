@@ -7,6 +7,7 @@ using MvcCore.Site.Data;
 
 namespace MvcCore.Site.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly IPedidoRepository _pedidoRepository;

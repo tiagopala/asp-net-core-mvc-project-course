@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -14,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MvcCore.Site.Areas.Identity.Data;
 using MvcCore.Site.Data;
+using MvcCore.Site.Extensions;
 
 namespace MvcCore.Site
 {
@@ -34,6 +36,7 @@ namespace MvcCore.Site
                 options.UseSqlServer(Configuration.GetConnectionString("MvcCoreSiteContextConnection")));
 
             services.AddDefaultIdentity<IdentityUser>()
+                .AddRoles<IdentityRole>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<MvcCoreSiteContext>();
 
@@ -41,6 +44,15 @@ namespace MvcCore.Site
                 options.UseSqlServer(Configuration.GetConnectionString("CustomDbContext")));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("PodeEditar", policy => policy.RequireClaim("PodeEditar"));
+
+                options.AddPolicy("PodeExcluir", policy => policy.AddRequirements(new PermissoesRequirement("PodeExcluir")));
+            });
+
+            services.AddSingleton<IAuthorizationHandler, PermissoesRequirementHandler>();
 
             #region DIP
             services.AddTransient<IPedidoRepository, PedidoRepository>();
