@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MvcCore.Site.Extensions;
 
 namespace MvcCore.Site.Areas.Produtos.Controllers
 {
@@ -36,6 +37,12 @@ namespace MvcCore.Site.Areas.Produtos.Controllers
 
         [Authorize(Policy = "PodeExcluir")]
         public IActionResult SecretClaimValue()
+        {
+            return View("SecretRole");
+        }
+
+        [ClaimsAuthorize("Produtos","PodeLer")]
+        public IActionResult CustomSecretClaimValue()
         {
             return View("SecretRole");
         }
