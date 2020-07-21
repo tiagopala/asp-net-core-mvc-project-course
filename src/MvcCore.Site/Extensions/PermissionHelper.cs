@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MvcCore.Site.Extensions
 {
+
+    // Define se o usuário autenticado possui a ClaimType "Permissoes" e a algum Claim Value informado na Policy. ex: PodeAdicionar / PodeExcluir
     public class PermissoesRequirement : IAuthorizationRequirement
     {
         public string Permissao { get; set; }

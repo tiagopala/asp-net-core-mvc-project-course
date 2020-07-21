@@ -18,6 +18,7 @@ namespace MvcCore.Site.Areas.Produtos.Controllers
             return View();
         }
 
+        [Authorize(Policy = "PodeAdicionar")]
         public IActionResult Inserir()
         {
             return View();

@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using MvcCore.Site.Areas.Identity.Data;
+using MvcCore.Site.Configuration;
 using MvcCore.Site.Data;
 using MvcCore.Site.Extensions;
 
@@ -32,31 +33,12 @@ namespace MvcCore.Site
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MvcCoreSiteContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("MvcCoreSiteContextConnection")));
-
-            services.AddDefaultIdentity<IdentityUser>()
-                .AddRoles<IdentityRole>()
-                .AddDefaultUI(UIFramework.Bootstrap4)
-                .AddEntityFrameworkStores<MvcCoreSiteContext>();
-
-            services.AddDbContext<CustomDbContext>(options => 
-                options.UseSqlServer(Configuration.GetConnectionString("CustomDbContext")));
+            services.ResolveIdentity(Configuration);
+            services.ResolveDatabase(Configuration);
+            services.ResolverAuthorization();
+            services.ResolveDependencyInjection();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
-            services.AddAuthorization(options =>
-            {
-                options.AddPolicy("PodeEditar", policy => policy.RequireClaim("PodeEditar"));
-
-                options.AddPolicy("PodeExcluir", policy => policy.AddRequirements(new PermissoesRequirement("PodeExcluir")));
-            });
-
-            services.AddSingleton<IAuthorizationHandler, PermissoesRequirementHandler>();
-
-            #region DIP
-            services.AddTransient<IPedidoRepository, PedidoRepository>();
-            #endregion
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
