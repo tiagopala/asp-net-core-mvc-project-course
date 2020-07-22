@@ -11,7 +11,7 @@ namespace MvcCore.Site.Configuration
 {
     public static class AuthorizationConfig
     {
-        public static IServiceCollection ResolverAuthorization(this IServiceCollection services)
+        public static IServiceCollection ResolveAuthorization(this IServiceCollection services)
         {
             #region AuthConfig
 

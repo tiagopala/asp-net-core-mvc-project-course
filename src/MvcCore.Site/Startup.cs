@@ -45,7 +45,7 @@ namespace MvcCore.Site
         {
             services.ResolveIdentity(Configuration);
             services.ResolveDatabase(Configuration);
-            services.ResolverAuthorization();
+            services.ResolveAuthorization();
             services.ResolveDependencyInjection();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -57,6 +57,12 @@ namespace MvcCore.Site
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/erro/500");
+                app.UseStatusCodePagesWithRedirects("/erro/{0}");
+                app.UseHsts();
             }
 
             app.UseStaticFiles();
