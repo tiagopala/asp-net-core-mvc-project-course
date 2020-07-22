@@ -33,7 +33,7 @@ namespace MvcCore.Site
 
             if (hostingEnvironment.IsProduction())
             {
-                builder.AddUserSecrets<Startup>();
+                builder.AddUserSecrets<Startup>(); 
             }
 
             Configuration = builder.Build();
