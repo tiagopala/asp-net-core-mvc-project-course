@@ -22,7 +22,7 @@ namespace MvcCore.Site.Controllers
 
         public IActionResult Index()
         {
-            var pedido = _pedidoRepository.ObterPedido();
+            //var pedido = _pedidoRepository.ObterPedido();
 
             return View();
         }

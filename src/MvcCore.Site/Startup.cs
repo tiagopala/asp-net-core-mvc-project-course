@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using KissLog;
+using KissLog.Apis.v1.Listeners;
+using KissLog.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -33,7 +38,7 @@ namespace MvcCore.Site
 
             if (hostingEnvironment.IsProduction())
             {
-                builder.AddUserSecrets<Startup>(); 
+                builder.AddUserSecrets<Startup>();
             }
 
             Configuration = builder.Build();
@@ -66,8 +71,15 @@ namespace MvcCore.Site
             }
 
             app.UseStaticFiles();
-
             app.UseAuthentication();
+
+            #region [ KissLogUsageConfig ]
+            // app.UseKissLogMiddleware() must to be referenced after app.UseAuthentication(), app.UseSession()
+            app.UseKissLogMiddleware(options =>
+            {
+                new KissLogConfig().ConfigureKissLog(options,Configuration);
+            });
+            #endregion
 
             app.UseMvc(routes =>
             {
