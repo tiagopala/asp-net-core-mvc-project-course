@@ -13,11 +13,11 @@ namespace MvcCore.Site.Configuration
         {
             // register KissLog.net cloud listener
             options.Listeners.Add(new KissLogApiListener(new KissLog.Apis.v1.Auth.Application(
-                configuration["KissLog.OrganizationId"],    //  "d7910d65-e18a-43a1-9605-b5084bbeaf37"
-                configuration["KissLog.ApplicationId"])     //  "2064ee11-ebce-48c9-9cf0-34bb7c1915bf"
+                configuration["KissLog.OrganizationId"],
+                configuration["KissLog.ApplicationId"])
             )
             {
-                ApiUrl = configuration["KissLog.ApiUrl"]    //  "https://api.kisslog.net"
+                ApiUrl = configuration["KissLog.ApiUrl"]
             });
 
             // optional KissLog configuration

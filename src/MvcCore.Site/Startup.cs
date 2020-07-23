@@ -53,7 +53,10 @@ namespace MvcCore.Site
             services.ResolveAuthorization();
             services.ResolveDependencyInjection();
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc( options =>
+            {
+                options.Filters.Add(typeof(AuditoriaFilter));
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,13 +76,16 @@ namespace MvcCore.Site
             app.UseStaticFiles();
             app.UseAuthentication();
 
-            #region [ KissLogUsageConfig ]
-            // app.UseKissLogMiddleware() must to be referenced after app.UseAuthentication(), app.UseSession()
-            app.UseKissLogMiddleware(options =>
+            if (env.IsProduction())
             {
-                new KissLogConfig().ConfigureKissLog(options,Configuration);
-            });
-            #endregion
+                #region [ KissLogUsageConfig ]
+                // app.UseKissLogMiddleware() must to be referenced after app.UseAuthentication(), app.UseSession()
+                app.UseKissLogMiddleware(options =>
+                {
+                    new KissLogConfig().ConfigureKissLog(options,Configuration);
+                });
+                #endregion
+            }
 
             app.UseMvc(routes =>
             {

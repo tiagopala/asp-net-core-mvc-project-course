@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using MvcCore.Site.Data;
+using MvcCore.Site.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,10 @@ namespace MvcCore.Site.Configuration
             #region [ KissLoggerServices ]
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped((context) => Logger.Factory.Get());
+            #endregion
+
+            #region [ Filters ]
+            services.AddScoped<AuditoriaFilter>();
             #endregion
 
             return services;
